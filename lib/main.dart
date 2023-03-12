@@ -45,6 +45,10 @@ class MyHomePageState extends State<MyHomePage> {
         id: 't7', title: 'Tahu Goreng', amount: 3000, date: DateTime.now()),
     Transaction(
         id: 't8', title: 'Pisang Goreng', amount: 3000, date: DateTime.now()),
+    Transaction(
+        id: 't9', title: 'Es cream', amount: 7000, date: DateTime.now()),
+    Transaction(
+        id: 't10', title: 'Teh Botol', amount: 3500, date: DateTime.now()),
   ];
 
   void _addNewTransaction(String txTitle, double txAmount, DateTime txDate) {
@@ -75,10 +79,17 @@ class MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final mediaQuery = MediaQuery.of(context);
+    final appBar = AppBar(title: const Center(child: Text('Expense App')));
+
     return Scaffold(
-      appBar: AppBar(title: const Center(child: Text('Expense App'))),
-      body: TransactionList(_userTransactions, _deleteTransaction),
-      // body: SingleChildScrollView(child: TransactionList(_userTransactions)),
+      appBar: appBar,
+      body: SingleChildScrollView(
+          child: Container(
+              height: mediaQuery.size.height -
+                  appBar.preferredSize.height -
+                  mediaQuery.padding.top,
+              child: TransactionList(_userTransactions, _deleteTransaction))),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showInputSheet(context),
