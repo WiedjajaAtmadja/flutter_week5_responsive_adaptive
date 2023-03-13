@@ -94,7 +94,7 @@ class MyHomePageState extends State<MyHomePage> {
           child: Container(
               height: mediaQuery.size.height -
                   appBar.preferredSize.height -
-                  mediaQuery.padding.top,
+                  mediaQuery.padding.top * 0.4,
               child: TransactionList(_userTransactions, _deleteTransaction))),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
