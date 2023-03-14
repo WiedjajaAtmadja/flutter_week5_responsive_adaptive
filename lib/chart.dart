@@ -26,6 +26,7 @@ class Chart extends StatelessWidget {
       var newTx = ChartSeries(
           day: DateFormat.E().format(weekDay).substring(0, 3),
           amount: totalSum.toInt());
+      // debugPrint(newTx.day);
       return data.add(newTx);
     });
   }
@@ -41,7 +42,7 @@ class Chart extends StatelessWidget {
           data: dataInReverse,
           domainFn: (ChartSeries series, _) => series.day,
           measureFn: (ChartSeries series, _) => series.amount,
-          colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault)
+          colorFn: (x, y) => charts.MaterialPalette.blue.shadeDefault)
     ];
     return charts.BarChart(series, animate: true);
   }
