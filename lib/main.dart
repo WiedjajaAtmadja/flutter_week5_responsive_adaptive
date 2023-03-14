@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'transaction.dart';
 import 'transaction_list.dart';
 import 'new_transaction.dart';
+import 'chart.dart';
 
 void main() {
   runApp(const MyApp());
@@ -91,11 +92,23 @@ class MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: appBar,
       body: SingleChildScrollView(
-          child: Container(
-              height: mediaQuery.size.height -
-                  appBar.preferredSize.height -
-                  mediaQuery.padding.top * 0.4,
-              child: TransactionList(_userTransactions, _deleteTransaction))),
+        child: Column(
+          children: [
+            SizedBox(
+                height: (mediaQuery.size.height -
+                        appBar.preferredSize.height -
+                        mediaQuery.padding.top) *
+                    0.4,
+                child: Chart(_recentTransactions)),
+            SizedBox(
+                height: (mediaQuery.size.height -
+                        appBar.preferredSize.height -
+                        mediaQuery.padding.top) *
+                    0.6,
+                child: TransactionList(_userTransactions, _deleteTransaction)),
+          ],
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () => _showInputSheet(context),
