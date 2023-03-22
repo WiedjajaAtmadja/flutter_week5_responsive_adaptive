@@ -117,7 +117,7 @@ class MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             if (!isLandscape)
-              Container(
+              SizedBox(
                 height: (mediaQuery.size.height -
                         appBar.preferredSize.height -
                         mediaQuery.padding.top) *
@@ -125,7 +125,7 @@ class MyHomePageState extends State<MyHomePage> {
                 child: Chart(_recentTransactions),
               ),
             if (!isLandscape)
-              Container(
+              SizedBox(
                 height: (mediaQuery.size.height -
                         appBar.preferredSize.height -
                         mediaQuery.padding.top) *
@@ -134,13 +134,13 @@ class MyHomePageState extends State<MyHomePage> {
               ),
             if (isLandscape)
               _showChart
-                  ? Container(
+                  ? SizedBox(
                       height: (mediaQuery.size.height -
                               appBar.preferredSize.height -
                               mediaQuery.padding.top) *
                           0.6,
                       child: Chart(_recentTransactions))
-                  : Container(
+                  : SizedBox(
                       height: (mediaQuery.size.height -
                               appBar.preferredSize.height -
                               mediaQuery.padding.top) *
